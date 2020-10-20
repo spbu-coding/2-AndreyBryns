@@ -41,6 +41,6 @@ sort:
 	ret
 	.cfi_endproc
 .LFE0:
-	.size	bubbleSort, .-bubbleSort
+	.size	sort, .-sort
 	.ident	""
 	.section	.note.GNU-stack,"",@progbits
