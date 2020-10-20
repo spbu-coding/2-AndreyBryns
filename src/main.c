@@ -103,7 +103,7 @@ unsigned int compare_arrays(const long long *first_array, const long long *secon
 
 int main(int argc, char **argv)
 {
-	long long array[ARRAY_MAX_SIZE] = {};
+	long long array[ARRAY_MAX_SIZE];
 	int to = 0, from = 0, is_from_set = 0, is_to_set = 0, read_parameters_return_code = read_parameters(argc, argv, &from, &to, &is_from_set, &is_to_set);
 	
 	if (read_parameters_return_code)
@@ -111,7 +111,7 @@ int main(int argc, char **argv)
 	
 	unsigned int array_size = read_array(array, from, to, is_from_set, is_to_set);
 	
-	long long array_copy[ARRAY_MAX_SIZE] = {};
+	long long array_copy[ARRAY_MAX_SIZE];
 	memcpy(array_copy, array, ARRAY_MAX_SIZE);
 	sort(array, array_size);
 	
