@@ -113,7 +113,7 @@ int main(int argc, char **argv)
 	
 	long long array_copy[ARRAY_MAX_SIZE];
 	//memcpy(array_copy, array, ARRAY_MAX_SIZE * sizeof(long long));
-	for (int i = 0; i < array_size; i++) array_copy[i] = array[i];
+	for (unsigned int i = 0; i < array_size; i++) array_copy[i] = array[i];
 	sort(array, array_size);
 	
 	unsigned int return_code = compare_arrays(array, array_copy, array_size);
