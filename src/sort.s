@@ -1,86 +1,46 @@
-.text
-	.file	"sort.c"
-	.globl	sort                    # -- Begin function sort
-	.p2align	4, 0x90
-	.type	sort,@function
-sort:                                   # @sort
+.file	"sort.c"
+	.text
+	.p2align 4,,15
+	.globl	sort
+	.type	sort, @function
+sort:
+.LFB0:
 	.cfi_startproc
-# %bb.0:                                # %entry
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register %rbp
-	movq	%rdi, -8(%rbp)
-	movl	%esi, -12(%rbp)
-	movl	$0, -16(%rbp)
-.LBB0_1:                                # %for.cond
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_3 Depth 2
-	movl	-16(%rbp), %eax
-	cmpl	-12(%rbp), %eax
-	jae	.LBB0_10
-# %bb.2:                                # %for.body
-                                        #   in Loop: Header=BB0_1 Depth=1
-	movl	$0, -20(%rbp)
-.LBB0_3:                                # %for.cond1
-                                        #   Parent Loop BB0_1 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	movl	-20(%rbp), %eax
-	cmpl	-16(%rbp), %eax
-	jge	.LBB0_8
-# %bb.4:                                # %for.body3
-                                        #   in Loop: Header=BB0_3 Depth=2
-	movq	-8(%rbp), %rax
-	movslq	-20(%rbp), %rcx
-	movq	(%rax,%rcx,8), %rax
-	movq	-8(%rbp), %rcx
-	movslq	-16(%rbp), %rdx
-	cmpq	(%rcx,%rdx,8), %rax
-	jle	.LBB0_6
-# %bb.5:                                # %if.then
-                                        #   in Loop: Header=BB0_3 Depth=2
-	movq	-8(%rbp), %rax
-	movslq	-20(%rbp), %rcx
-	movq	(%rax,%rcx,8), %rax
-	movl	%eax, %edx
-	movl	%edx, -24(%rbp)
-	movq	-8(%rbp), %rax
-	movslq	-16(%rbp), %rcx
-	movq	(%rax,%rcx,8), %rax
-	movq	-8(%rbp), %rcx
-	movslq	-20(%rbp), %rsi
-	movq	%rax, (%rcx,%rsi,8)
-	movslq	-24(%rbp), %rax
-	movq	-8(%rbp), %rcx
-	movslq	-16(%rbp), %rsi
-	movq	%rax, (%rcx,%rsi,8)
-.LBB0_6:                                # %if.end
-                                        #   in Loop: Header=BB0_3 Depth=2
-	jmp	.LBB0_7
-.LBB0_7:                                # %for.inc
-                                        #   in Loop: Header=BB0_3 Depth=2
-	movl	-20(%rbp), %eax
-	addl	$1, %eax
-	movl	%eax, -20(%rbp)
-	jmp	.LBB0_3
-.LBB0_8:                                # %for.end
-                                        #   in Loop: Header=BB0_1 Depth=1
-	jmp	.LBB0_9
-.LBB0_9:                                # %for.inc16
-                                        #   in Loop: Header=BB0_1 Depth=1
-	movl	-16(%rbp), %eax
-	addl	$1, %eax
-	movl	%eax, -16(%rbp)
-	jmp	.LBB0_1
-.LBB0_10:                               # %for.end18
-	popq	%rbp
-	.cfi_def_cfa %rsp, 8
-	retq
-.Lfunc_end0:
-	.size	sort, .Lfunc_end0-sort
+	movl	%esi, %r9d
+	subl	$1, %r9d
+	je	.L1
+	nop
+	leal	-2(%rsi), %eax
+	xorl	%r8d, %r8d
+	leaq	(%rdi,%rax,8), %r10
+	movl	%r9d, %edi
+	subq	%rax, %rdi
+	.p2align 4,,10
+	.p2align 3
+.L5:
+	movq	%r10, %rax
+	movl	%r9d, %edx
+	.p2align 4,,10
+	.p2align 3
+.L4:
+	movq	(%rax), %rcx
+	movq	(%rax,%rdi,8), %rsi
+	subl	$1, %edx
+	cmpq	%rsi, %rcx
+	jle	.L3
+	movq	%rsi, (%rax)
+	movq	%rcx, (%rax,%rdi,8)
+.L3:
+	subq	$8, %rax
+	cmpl	%r8d, %edx
+	ja	.L4
+	addl	$1, %r8d
+	cmpl	%r9d, %r8d
+	jne	.L5
+.L1:
+	ret
 	.cfi_endproc
-                                        # -- End function
-
-	.ident	"clang version 7.0.0 (git@github.com:apple/swift-clang.git 5c9d04dc0697297a47b5edb0c1a581b306a42bdb) (git@github.com:apple/swift-llvm.git 34250a6eef79ee8a83c5cfb4deb1583176dcbb63)"
-	.section	".note.GNU-stack","",@progbits
+.LFE0:
+	.size	bubbleSort, .-bubbleSort
+	.ident	""
+	.section	.note.GNU-stack,"",@progbits
