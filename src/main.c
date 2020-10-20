@@ -25,8 +25,8 @@ int is_number(const char *str)
 	return 1;
 }
 
-int read_parameters(int argc, char **argv, int *from, int *to, int *is_from_set, int *is_to_set)
-{argc++;
+int read_parameters(const int argc, char **argv, int *from, int *to, int *is_from_set, int *is_to_set)
+{
 	if (argc >= 4)
 		return -2;
 
