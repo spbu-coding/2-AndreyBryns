@@ -1,9 +1,9 @@
 .text
 	.file	"sort.c"
-	.globl	_Z4sortPxj              # -- Begin function _Z4sortPxj
+	.globl	sort                    # -- Begin function sort
 	.p2align	4, 0x90
-	.type	_Z4sortPxj,@function
-_Z4sortPxj:                             # @_Z4sortPxj
+	.type	sort,@function
+sort:                                   # @sort
 	.cfi_startproc
 # %bb.0:                                # %entry
 	pushq	%rbp
@@ -78,7 +78,7 @@ _Z4sortPxj:                             # @_Z4sortPxj
 	.cfi_def_cfa %rsp, 8
 	retq
 .Lfunc_end0:
-	.size	_Z4sortPxj, .Lfunc_end0-_Z4sortPxj
+	.size	sort, .Lfunc_end0-sort
 	.cfi_endproc
                                         # -- End function
 
