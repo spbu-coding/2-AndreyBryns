@@ -32,7 +32,7 @@ int read_parameters(const int argc, char **argv, int *from, int *to, int *is_fro
 
 	for (int i = 0; i < argc; i++)
 	{	
-		if (!strncmp("--from=", argv[i], PARAMETER_FROM_LENGTH))
+		if (argv[i] >= PARAMETER_FROM_LENGTH && !strncmp("--from=", argv[i], PARAMETER_FROM_LENGTH))
 		{
 			if (*is_from_set)
 				return -3;
@@ -45,7 +45,7 @@ int read_parameters(const int argc, char **argv, int *from, int *to, int *is_fro
 				*from = atoi(argv[i] + PARAMETER_FROM_LENGTH);
 		}
 		
-		if (!strncmp("--to=", argv[i], PARAMETER_TO_LENGTH))
+		if (argv[i] >= PARAMETER_TO_LENGTH && !strncmp("--to=", argv[i], PARAMETER_TO_LENGTH))
 		{
 			if (*is_to_set)
 				return -3;
@@ -73,7 +73,7 @@ unsigned int read_array(long long *array, const int from, const int to, const in
 	unsigned int array_size = 0;
 	long long input_element;
 	
-	while (scanf("%lld", &input_element))
+	while (scanf("%lld", &input_element) == 1)
 	{
 		if (input_element >= to && is_to_set)
 			fprintf(stderr, "%lld ", input_element);
@@ -112,8 +112,8 @@ int main(int argc, char **argv)
 	unsigned int array_size = read_array(array, from, to, is_from_set, is_to_set);
 	
 	long long array_copy[ARRAY_MAX_SIZE];
-	//memcpy(array_copy, array, ARRAY_MAX_SIZE * sizeof(long long));
-	for (unsigned int i = 0; i < array_size; i++) array_copy[i] = array[i];
+	memcpy(array_copy, array, ARRAY_MAX_SIZE * sizeof(long long));
+	//for (unsigned int i = 0; i < array_size; i++) array_copy[i] = array[i];
 	sort(array, array_size);
 	
 	unsigned int return_code = compare_arrays(array, array_copy, array_size);
