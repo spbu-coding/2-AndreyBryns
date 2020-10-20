@@ -84,5 +84,3 @@ _Z4sortPxj:                             # @_Z4sortPxj
 
 	.ident	"clang version 7.0.0 (git@github.com:apple/swift-clang.git 5c9d04dc0697297a47b5edb0c1a581b306a42bdb) (git@github.com:apple/swift-llvm.git 34250a6eef79ee8a83c5cfb4deb1583176dcbb63)"
 	.section	".note.GNU-stack","",@progbits
-	.addrsig
-	.addrsig_sym _Z4sortPxj
