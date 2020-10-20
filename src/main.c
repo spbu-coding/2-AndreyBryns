@@ -32,6 +32,8 @@ int read_parameters(const int argc, char **argv, int *from, int *to, int *is_fro
 
 	for (int i = 0; i < argc; i++)
 	{	
+		unsigned int parameter_size = strlen(argv[i]);
+	
 		if (argv[i] >= PARAMETER_FROM_LENGTH && !strncmp("--from=", argv[i], PARAMETER_FROM_LENGTH))
 		{
 			if (*is_from_set)
