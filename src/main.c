@@ -34,7 +34,7 @@ int read_parameters(const int argc, char **argv, int *from, int *to, int *is_fro
 	{	
 		unsigned int parameter_size = strlen(argv[i]);
 	
-		if (argv[i] >= PARAMETER_FROM_LENGTH && !strncmp("--from=", argv[i], PARAMETER_FROM_LENGTH))
+		if (parameter_size >= PARAMETER_FROM_LENGTH && !strncmp("--from=", argv[i], PARAMETER_FROM_LENGTH))
 		{
 			if (*is_from_set)
 				return -3;
@@ -47,7 +47,7 @@ int read_parameters(const int argc, char **argv, int *from, int *to, int *is_fro
 				*from = atoi(argv[i] + PARAMETER_FROM_LENGTH);
 		}
 		
-		if (argv[i] >= PARAMETER_TO_LENGTH && !strncmp("--to=", argv[i], PARAMETER_TO_LENGTH))
+		if (parameter_size >= PARAMETER_TO_LENGTH && !strncmp("--to=", argv[i], PARAMETER_TO_LENGTH))
 		{
 			if (*is_to_set)
 				return -3;
