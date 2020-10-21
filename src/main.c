@@ -18,6 +18,9 @@ int is_number(const char *str)
 	if (str[0] == '-' || str[0] == '+')
 		i++;
 	
+	if (i == str_length)
+		return 0;
+	
 	for (; i < str_length; i++)
 		if (str[i] < '0' || str[i] > '9')
 			return 0;
@@ -79,14 +82,15 @@ unsigned int read_array(long long *array, const int from, const int to, const in
 	{
 		if (input_element >= to && is_to_set)
 			fprintf(stderr, "%lld ", input_element);
-		else
-			if (input_element <= from && is_from_set)
-				fprintf(stdout, "%lld ", input_element);
-			else
-			{
-				array[array_size] = input_element;
-				array_size++;
-			}
+			
+		if (input_element <= from && is_from_set)
+			fprintf(stdout, "%lld ", input_element);
+		
+		if (!(input_element >= to && is_to_set) && !(input_element <= from && is_from_set))
+		{
+			array[array_size] = input_element;
+			array_size++;
+		}
 	}
 	
 	return array_size;
